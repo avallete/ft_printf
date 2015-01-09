@@ -21,19 +21,54 @@ int check_exstr(const char *str)
 		return (0);
 }
 
-void	init_flags(char *str, t_flags *flags, int *i)
+void	check_flg(char *str, t_flags *flags, int *i)
 {
-	while (str[*i + 1] == '#' || str[*i + 1] == '+' || str[*i + 1] == '0' || \
-			str[*i + 1] == '-' || str[*i + 1] == ' ' && str[*i + 1] != '\0')
+	if (str[*i + 1] == '#' || str[*i + 1] == '+' || str[*i + 1] == '0' || \
+			str[*i+ 1] == '-' || str[*i + 1] == ' ')
 	{
-		str[*i + 1] == '#' ? (flags->optsharp = 1) : (flags->optsharp += 0);
-		str[*i + 1] == '-' ? (flags->optmin = 1) : (flags->optmin += 0);
-		str[*i + 1] == '+' ? (flags->optplus = 1) : (flags->optplus += 0);
-		str[*i + 1] == '0' ? (flags->optzero = 1) : (flags->optzero += 0);
-		str[*i + 1] == ' ' ? (flags->optspace = 1) : (flags->optspace += 0);
+		while (str[*i + 1] == '#' || str[*i + 1] == '+' || str[*i + 1] == '0' || \
+				str[*i+ 1] == '-' || str[*i + 1] == ' ')
+		{
+			str[*i + 1] == '#' ? (flags->optsharp = 1) : (flags->optsharp += 0);
+			str[*i + 1] == '-' ? (flags->optmin = 1) : (flags->optmin += 0);
+			str[*i + 1] == '+' ? (flags->optplus = 1) : (flags->optplus += 0);
+			str[*i + 1] == '0' ? (flags->optzero = 1) : (flags->optzero += 0);
+			str[*i + 1] == ' ' ? (flags->optspace = 1) : (flags->optspace += 0);
+			*i++;
+			i[1]++;
+		}
+	}
+}
+
+char	*ft_grep_first_number(char *str, int *i)
+{
+	char result[100];
+	int	e;
+
+	ft_bzero(result, 100);
+	e = 0;
+	while (ft_isdigit(str[*i]))
+	{
+		result[e] = str[*i];
+		e++;
 		*i++;
 		i[1]++;
 	}
+	return (result);
+}
+
+void	check_width(char *str, t_flags *flags, int *i)
+{
+	char *nmb;
+
+	if (flags->optzero)
+		nmb = ft_grep_first_number(str, i);
+}
+
+void	init_flags(char *str, t_flags *flags, int *i)
+{
+	check_flg(str, flags, i);
+
 }
 
 void ft_arg_sort(const char *str, va_list list, int *i)
@@ -41,8 +76,7 @@ void ft_arg_sort(const char *str, va_list list, int *i)
 	t_flags flags;
 
 	ft_bzero(&flags, sizeof(t_flags));
-	if (str[*i + 1] != '\0')
-		init_flags(str, &flags, i);
+	init_flags(str, &flags, i);
 }
 
 int found_flags(const char *str, va_list list)
@@ -115,7 +149,7 @@ int main(void)
 	int ret1;
 	int ret2;
 
-	ret1 = printf("jolie test %-------00000      ####%%%%%%%%%%d%%%fdf\n", 3);
+	ret1 = printf("jolie test %    #####00000\n", 3);
 	ret1 = ft_printf("jolie test %\n", "lalalalal");
 	//	printf("%d -- %d\n", ret1, ret2);
 	return (0);

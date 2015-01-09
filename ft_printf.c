@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:12 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/09 15:23:17 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/09 16:23:24 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,49 +21,69 @@ int check_exstr(const char *str)
 		return (0);
 }
 
-int found_flags(const char *str)
+void	init_flags(char *str, t_flags *flags, int *i)
 {
-	int i;
-
-	i = 0;
-	while (str[i] != '%' && str[i] != '\0')
-		ft_putchar(str[i++]);
-	return (i);
+	while (str[*i + 1] == '#' || str[*i + 1] == '+' || str[*i + 1] == '0' || \
+			str[*i + 1] == '-' || str[*i + 1] == ' ' && str[*i + 1] != '\0')
+	{
+		str[*i + 1] == '#' ? (flags->optsharp = 1) : (flags->optsharp += 0);
+		str[*i + 1] == '-' ? (flags->optmin = 1) : (flags->optmin += 0);
+		str[*i + 1] == '+' ? (flags->optplus = 1) : (flags->optplus += 0);
+		str[*i + 1] == '0' ? (flags->optzero = 1) : (flags->optzero += 0);
+		str[*i + 1] == ' ' ? (flags->optspace = 1) : (flags->optspace += 0);
+		*i++;
+		i[1]++;
+	}
 }
 
-int arg_is_mod(void)
+void ft_arg_sort(const char *str, va_list list, int *i)
 {
-	ft_putchar('%');
-	return (2);
+	t_flags flags;
+
+	ft_bzero(&flags, sizeof(t_flags));
+	if (str[*i + 1] != '\0')
+		init_flags(str, &flags, i);
 }
 
-int arg_is_min(const char *str, va_list list)
+int found_flags(const char *str, va_list list)
 {
-	ft_arg_sort(str + 2, list);
-	return (2);
+	int i[2];
+
+	*i = 0;
+	i[1] = 0;
+	while (str[*i] != '\0')
+	{
+		if (str[*i] == '%')
+			ft_arg_sort(str, list, i);
+		else
+			ft_putchar(str[*i]);
+		*i += 1;
+	}
+	return (*i - i[1]);
 }
 
-int ft_arg_sort(const char *str, va_list list)
+int arg_is_string(va_list list)
 {
-	int i;
+	char *str;
 
-	i = 1;
-	if (*str == '%' && *(str + 1) == '%')
-		return (arg_is_mod());
-	if (*str == '-' && *(str + 1) == '-')
-		return (arg_is_min(str, list));
-	return (i);
+	str = NULL;
+	str = va_arg(list, char*);
+	str ? ft_putstr(str) : ft_putstr("(null)");
+	if (str)
+		return (ft_strlen(str));
+	return (6);
 }
 
-int ft_arg_grep(const char *str, va_list list, int *ret)
+int arg_is_mod(const char *str, va_list list)
 {
-	int i;
-
-	i = 0;
-	*ret += (i = found_flags(str));
-	if (*str + i)
-		*ret += (i += ft_arg_sort(str + i, list));
-	return (i);
+	if (*str == '%')
+	{
+		ft_putchar('%');
+		return (2);
+	}
+	if (*str == 's')
+		arg_is_string(list);
+	return (1);
 }
 
 int ft_printf(const char *format, ...)
@@ -79,8 +99,13 @@ int ft_printf(const char *format, ...)
 	{
 		va_start(list, format);
 		va_copy(cp, list);
-		while (format[i] != '\0')
-			i += ft_arg_grep(format + i, cp, &ret);
+		if (ft_strchr(format, '%'))
+			ret = found_flags(format, list);
+		else
+		{
+			ft_putstr(format);
+			ret = ft_strlen(format);
+		}
 	}
 	return (ret);
 }
@@ -90,8 +115,8 @@ int main(void)
 	int ret1;
 	int ret2;
 
-	ret1 = printf("jolie test %-0%%%%%%%%%%d%%%fdf\n", 3);
-	ret1 = ft_printf("jolie test %-%%%%%%%%%%d%%%fdf\n", 3);
+	ret1 = printf("jolie test %-------00000      ####%%%%%%%%%%d%%%fdf\n", 3);
+	ret1 = ft_printf("jolie test %\n", "lalalalal");
 	//	printf("%d -- %d\n", ret1, ret2);
 	return (0);
 }

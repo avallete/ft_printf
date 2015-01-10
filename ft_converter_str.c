@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_converter_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 10:19:12 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 16:43:32 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/10 16:42:04 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/10 16:49:04 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <ft_printf.h>
 # include <stdio.h>
 
-int ft_printf(const char *format, ...)
+int arg_is_string(t_flags *flags, va_list list, int *i)
 {
-	va_list list;
-	va_list cp;
-	int		ret;
-	int		i;
+	char *str;
 
-	ret = 0;
-	i = 0;
-	if (check_exstr(format))
-	{
-		va_start(list, format);
-		va_copy(cp, list);
-		if (ft_strchr(format, '%'))
-			ret = found_flags(format, list);
-		else
-		{
-			ft_putstr(format);
-			ret = ft_strlen(format);
-		}
-	}
-	return (ret);
+	str = NULL;
+	str = va_arg(list, char*);
+	str ? ft_putstr(str) : ft_putstr("(null)");
+	i[0] += 1;
+	str ? (i[1] += ft_strlen(str)) : (i[1] += 6);
 }
+
+

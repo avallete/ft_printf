@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 10:19:12 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 16:43:32 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/10 16:29:05 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/10 16:30:14 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <ft_printf.h>
 # include <stdio.h>
 
-int ft_printf(const char *format, ...)
+int main(void)
 {
-	va_list list;
-	va_list cp;
-	int		ret;
-	int		i;
+	int ret1;
+	int ret2;
 
-	ret = 0;
-	i = 0;
-	if (check_exstr(format))
-	{
-		va_start(list, format);
-		va_copy(cp, list);
-		if (ft_strchr(format, '%'))
-			ret = found_flags(format, list);
-		else
-		{
-			ft_putstr(format);
-			ret = ft_strlen(format);
-		}
-	}
-	return (ret);
+	ret1 = printf("jolie test %21.10d\n", 3);
+	ret1 = ft_printf("jolie test %21.10d\n", 3);
+	//	printf("%d -- %d\n", ret1, ret2);
+	return (0);
 }

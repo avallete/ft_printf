@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_converter_mod.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 10:19:12 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 16:43:32 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/10 16:40:04 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/10 16:47:55 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <ft_printf.h>
 # include <stdio.h>
 
-int ft_printf(const char *format, ...)
+int arg_is_mod(t_flags *flags, va_list list, int *i)
 {
-	va_list list;
-	va_list cp;
-	int		ret;
-	int		i;
-
-	ret = 0;
-	i = 0;
-	if (check_exstr(format))
+	if (flags->type == '%')
 	{
-		va_start(list, format);
-		va_copy(cp, list);
-		if (ft_strchr(format, '%'))
-			ret = found_flags(format, list);
-		else
-		{
-			ft_putstr(format);
-			ret = ft_strlen(format);
-		}
+		ft_putchar('%');
+		i[0] += 1;
+		i[1] += 1;
 	}
-	return (ret);
 }

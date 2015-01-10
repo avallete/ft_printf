@@ -6,19 +6,18 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:40:04 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 16:47:55 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/10 17:18:01 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <ft_printf.h>
 # include <stdio.h>
 
-int arg_is_mod(t_flags *flags, va_list list, int *i)
+int arg_is_mod(t_flags *flags, int *i)
 {
 	if (flags->type == '%')
 	{
 		ft_putchar('%');
-		i[0] += 1;
 		i[1] += 1;
 	}
 }

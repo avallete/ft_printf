@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 16:48:16 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/10 17:51:42 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	init_flags(char *str, t_flags *flags, int *i);
 */
 
 /* Modulo function */
-int arg_is_mod(t_flags *flags, va_list list, int *i);
+int arg_is_mod(t_flags *flags, int *i);
 
 /* String function */
 int arg_is_string(t_flags *flags, va_list list, int *i);

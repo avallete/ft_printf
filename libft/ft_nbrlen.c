@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_converter_int.c                                 :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/10 16:30:50 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 11:14:17 by avallete         ###   ########.fr       */
+/*   Created: 2014/11/20 16:23:27 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/11 11:15:31 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <ft_printf.h>
+#include "libft.h"
 
-void	print_int(va_list list, int *i)
+size_t	ft_nbrlen(int nbr)
 {
-	int c;
+	size_t i;
 
-	c = va_arg(list, int);
-	if (c >= 0 && c <= 255)
-		ft_putchar((char)c);
-	i[1] += 1;
-}
-
-void	arg_is_int(t_flags *flags, va_list list, int *i)
-{
-	if ((flags->type == 'd' || flags->type == 'i') && flags->formf == 'l')
-		flags = flags;
-	else
-		print_int(list, i);
+	i = 1;
+	if (nbr < 0)
+		nbr = -nbr;
+	while (nbr / 10)
+	{
+		nbr /= 10;
+		i++;
+	}
+	return (i);
 }

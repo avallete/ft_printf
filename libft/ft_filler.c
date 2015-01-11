@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 11:25:50 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 11:28:17 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 12:41:58 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	ft_filler(char c, size_t len)
 	size_t i;
 
 	i = 0;
-	while (i++ <= len)
+	while (i++ < len)
 		ft_putchar(c);
 }

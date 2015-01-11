@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 11:20:22 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 11:39:25 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	print_char(va_list list, int *i);
 
 /* Int function */
 void	arg_is_int(t_flags *flags, va_list list, int *i);
-void	print_int(va_list list, int *i);
+void	print_int(t_flags *flags, va_list list, int *i);
 
 /*
 ** ----------

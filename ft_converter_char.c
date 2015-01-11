@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_converter_mod.c                                 :+:      :+:    :+:   */
+/*   ft_converter_char.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/10 16:40:04 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 11:03:09 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/11 10:34:27 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/11 11:02:53 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <ft_printf.h>
-# include <stdio.h>
 
-void arg_is_mod(t_flags *flags, int *i)
+void	print_char(va_list list, int *i)
 {
-	if (flags->type == '%')
-	{
-		ft_putchar('%');
-		i[1] += 1;
-	}
+	int c;
+
+	c = va_arg(list, int);
+	if (c >= 0 && c <= 255)
+		ft_putchar((char)c);
+	i[1] += 1;
+}
+
+void	arg_is_char(t_flags *flags, va_list list, int *i)
+{
+	if (flags->type == 'c' && flags->formf == 'l')
+		flags = flags;
+	else
+		print_char(list, i);
 }

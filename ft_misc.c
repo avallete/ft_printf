@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:15:24 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 16:18:08 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 11:07:01 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ int		check_exstr(const char *str)
 		return (0);
 }
 
-char	*ft_grep_first_number(char *str, int *i)
+char	*ft_grep_first_number(const char *str, int *i, char *result)
 {
-	char	result[100];
 	int		e;
 
 	ft_bzero(result, 100);
@@ -37,7 +36,7 @@ char	*ft_grep_first_number(char *str, int *i)
 	return (result);
 }
 
-int		type_cmp(char c)
+int		type_cmp(const char c)
 {
 	if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' || c == 'i' ||\
 		c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X' ||\

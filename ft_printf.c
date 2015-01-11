@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:12 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 17:14:58 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 11:08:31 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ int ft_printf(const char *format, ...)
 	va_list list;
 	va_list cp;
 	int		ret;
-	int		i;
 
 	ret = 0;
-	i = 0;
 	if (check_exstr(format))
 	{
 		va_start(list, format);

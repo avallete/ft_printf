@@ -6,14 +6,14 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:10:19 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 16:12:59 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 11:07:03 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <ft_printf.h>
 
 
-void	check_flg(char *str, t_flags *flags, int *i)
+void	check_flg(const char *str, t_flags *flags, int *i)
 {
 	while (str[*i] == '#' || str[*i] == '+' || str[*i] == '0' || \
 			str[*i] == '-' || str[*i] == ' ')
@@ -27,27 +27,27 @@ void	check_flg(char *str, t_flags *flags, int *i)
 	}
 }
 
-void	check_width(char *str, t_flags *flags, int *i)
+void	check_width(const char *str, t_flags *flags, int *i)
 {
-	char *nmb;
+	char nmb[100];
 
-	nmb = ft_grep_first_number(str, i);
+	ft_grep_first_number(str, i, nmb);
 	flags->min_size = ft_atoi(nmb);
 }
 
-void	check_prec(char *str, t_flags *flags, int *i)
+void	check_prec(const char *str, t_flags *flags, int *i)
 {
-	char *pres;
+	char pres[100];
 
 	if (str[i[0]] == '.')
 	{
 		*i += 1;
-		pres = ft_grep_first_number(str, i);
+		ft_grep_first_number(str, i, pres);
 		flags->prec = ft_atoi(pres);
 	}
 }
 
-void	check_form(char *str, t_flags *flags, int *i)
+void	check_form(const char *str, t_flags *flags, int *i)
 {
 	if (str[i[0]] == 'h' || str[i[0]] == 'l' || str[i[0]] == 'j' || str[i[0]] == 'z')
 	{
@@ -56,7 +56,7 @@ void	check_form(char *str, t_flags *flags, int *i)
 		if (str[i[0]] == 'h' || str[i[0]] == 'l')
 		{
 			flags->formt = str[i[0]];
-			str[i[0]] += 1;
+			*i += 1;
 		}
 		else
 			flags->formt = '\0';
@@ -65,7 +65,7 @@ void	check_form(char *str, t_flags *flags, int *i)
 		flags->formf = '\0';
 }
 
-void	check_type(char *str, t_flags *flags, int *i)
+void	check_type(const char *str, t_flags *flags, int *i)
 {
 	if (type_cmp(str[i[0]]))
 	{

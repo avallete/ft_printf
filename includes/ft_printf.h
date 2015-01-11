@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 17:51:42 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 11:06:23 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef	struct	s_flags
 */
 
 int		check_exstr(const char *str);
-char	*ft_grep_first_number(char *str, int *i);
-int		type_cmp(char c);
+char	*ft_grep_first_number(const char *str, int *i, char *result);
+int		type_cmp(const char c);
 
 /*
 ** ----------
@@ -49,11 +49,11 @@ int		type_cmp(char c);
 ** ----------
 */
 
-void	check_flg(char *str, t_flags *flags, int *i);
-void	check_width(char *str, t_flags *flags, int *i);
-void	check_prec(char *str, t_flags *flags, int *i);
-void	check_form(char *str, t_flags *flags, int *i);
-void	check_type(char *str, t_flags *flags, int *i);
+void	check_flg(const char *str, t_flags *flags, int *i);
+void	check_width(const char *str, t_flags *flags, int *i);
+void	check_prec(const char *str, t_flags *flags, int *i);
+void	check_form(const char *str, t_flags *flags, int *i);
+void	check_type(const char *str, t_flags *flags, int *i);
 
 
 /*
@@ -65,7 +65,7 @@ void	check_type(char *str, t_flags *flags, int *i);
 
 int		found_flags(const char *str, va_list list);
 void	ft_arg_sort(const char *str, va_list list, int *i);
-void	init_flags(char *str, t_flags *flags, int *i);
+void	init_flags(const char *str, t_flags *flags, int *i);
 
 
 
@@ -76,10 +76,15 @@ void	init_flags(char *str, t_flags *flags, int *i);
 */
 
 /* Modulo function */
-int arg_is_mod(t_flags *flags, int *i);
+void	arg_is_mod(t_flags *flags, int *i);
 
 /* String function */
-int arg_is_string(t_flags *flags, va_list list, int *i);
+void	arg_is_string(t_flags *flags, va_list list, int *i);
+void	print_string(va_list list, int *i);
+
+/* Char function */
+void	arg_is_char(t_flags *flags, va_list list, int *i);
+void	print_char(va_list list, int *i);
 
 /*
 ** ----------

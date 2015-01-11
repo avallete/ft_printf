@@ -6,14 +6,14 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:20:29 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/10 17:54:44 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 10:58:19 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <ft_printf.h>
 # include <stdio.h>
 
-void	init_flags(char *str, t_flags *flags, int *i)
+void	init_flags(const char *str, t_flags *flags, int *i)
 {
 	*i += 1;
 	check_flg(str, flags, i);
@@ -31,7 +31,9 @@ void ft_type_sort(t_flags *flags, va_list list, int *i)
 			arg_is_mod(flags, i);
 		if (flags->type == 's')
 				arg_is_string(flags, list, i);
-		}
+		if (flags->type == 'c')
+				arg_is_char(flags, list, i);
+	}
 }
 
 void ft_arg_sort(const char *str, va_list list, int *i)

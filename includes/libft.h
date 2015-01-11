@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:41:54 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 11:15:33 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 11:28:17 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,5 @@ size_t				ft_lstsize(t_list *list);
 void				*ft_realloc(void *ptr, size_t size);
 void				*ft_calloc(size_t nmemb, size_t size);
 size_t				ft_nbrlen(int nbr);
+void				ft_filler(char c, size_t len);
 #endif

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 11:16:08 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 13:33:14 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 18:18:38 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,17 @@ void	print_octal(va_list list, int *i)
 
 	ft_bzero(str, 100);
 	pt = va_arg(list, unsigned long int);
-	ft_linttoct(pt, str);
-	ft_putstr(str);
-	i[1] += ft_strlen(str);
+	if (pt < ULONG_MAX)
+	{
+		ft_linttoct(pt, str);
+		ft_putstr(str);
+		i[1] += ft_strlen(str);
+	}
+	else
+	{
+		ft_putstr("1777777777777777777777");
+		i[1] += 22;
+	}
 }
 
 void	arg_is_octal(t_flags *flags, va_list list, int *i)

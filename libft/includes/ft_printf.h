@@ -6,13 +6,14 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 17:58:06 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 18:18:39 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <libft.h>
+# include <LIMITS.h>
 # include <stdarg.h>
 # include <stdio.h>
 # define HEXMAJ ("0123456789ABCDEF")

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:20:29 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 11:17:45 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 13:31:36 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void ft_type_sort(t_flags *flags, va_list list, int *i)
 				arg_is_ptr(flags, list, i);
 		if (flags->type == 'x' || flags->type == 'X')
 				arg_is_x(flags, list, i);
-		if (flags->type == 'o')
+		if (flags->type == 'o' || flags->type == 'O')
 				arg_is_octal(flags, list, i);
 	}
 }

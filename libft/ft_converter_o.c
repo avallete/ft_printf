@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 11:16:08 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 13:28:06 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 13:32:01 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	print_octal(va_list list, int *i)
 
 void	arg_is_octal(t_flags *flags, va_list list, int *i)
 {
-	if (flags->type == 'o')
+	if (flags->type == 'o' || flags->type == 'O')
 		print_octal(list, i);
 }

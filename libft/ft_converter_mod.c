@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_converter_mod.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 14:41:35 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 16:09:04 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/10 16:40:04 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/11 11:03:09 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include <ft_printf.h>
+# include <stdio.h>
 
-void		ft_putnbr(int n)
+void arg_is_mod(t_flags *flags, int *i)
 {
-	char *str;
-	str = ft_itoa(n);
-	if (str)
+	if (flags->type == '%')
 	{
-		ft_putstr(str);
-		free(str);
-		str = NULL;
+		ft_putchar('%');
+		i[1] += 1;
 	}
 }

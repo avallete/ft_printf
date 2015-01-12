@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:30:50 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 13:14:53 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 14:45:00 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int		print_int_fill(t_flags *flags, int *i, int c)
 		print_int_opt(flags, c, size, i);
 	if (flags->optplus && c > 0)
 		size -= 1;
+	if (c < 0)
+		size += 1;
 	return (size);
 }
 
@@ -78,6 +80,8 @@ void	print_int(t_flags *flags, va_list list, int *i)
 	else
 	{
 		size = ft_nbrlen(c);
+		if (c < 0)
+			size += 1;
 		ft_putnbr(c);
 	}
 	i[1] += size;

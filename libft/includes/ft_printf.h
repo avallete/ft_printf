@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 13:15:01 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/11 17:52:21 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ int		print_int_fill(t_flags *flags, int *i, int c);
 void	print_int_opt(t_flags *flags, int c, int size, int *i);
 void	print_plus(t_flags *flags, int *i, int c);
 void	fill_it(t_flags *flags, int size);
+
+/* Ptr function */
+void	ft_inttohexa(unsigned long int nb, char *str);
+void	arg_is_ptr(t_flags *flags, va_list list, int *i);
+void	print_ptr(va_list list, int *i);
 
 /*
 ** ----------

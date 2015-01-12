@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 14:41:35 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 16:09:04 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/09 10:19:12 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/11 11:08:31 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include <ft_printf.h>
+# include <stdio.h>
 
-void		ft_putnbr(int n)
+int ft_printf(const char *format, ...)
 {
-	char *str;
-	str = ft_itoa(n);
-	if (str)
+	va_list list;
+	va_list cp;
+	int		ret;
+
+	ret = 0;
+	if (check_exstr(format))
 	{
-		ft_putstr(str);
-		free(str);
-		str = NULL;
+		va_start(list, format);
+		va_copy(cp, list);
+		if (ft_strchr(format, '%'))
+			ret = found_flags(format, list);
+		else
+		{
+			ft_putstr(format);
+			ret = ft_strlen(format);
+		}
 	}
+	return (ret);
 }

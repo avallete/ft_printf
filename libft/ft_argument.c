@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:20:29 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 13:34:50 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 17:14:40 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void ft_type_sort(t_flags *flags, va_list list, int *i)
 				arg_is_string(flags, list, i);
 		if (flags->type == 'c')
 				arg_is_char(flags, list, i);
-		if (flags->type == 'd' || flags->type == 'i')
+		if (flags->type == 'd' || flags->type == 'i' || flags->type == 'D')
 				arg_is_int(flags, list, i);
 		if (flags->type == 'p')
 				arg_is_ptr(flags, list, i);

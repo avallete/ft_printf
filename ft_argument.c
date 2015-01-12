@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:20:29 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 11:20:29 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 17:13:29 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void ft_type_sort(t_flags *flags, va_list list, int *i)
 				arg_is_char(flags, list, i);
 		if (flags->type == 'd' || flags->type == 'i')
 				arg_is_int(flags, list, i);
+		if (flags->type == 'D')
+				arg_is_longi(flags, list, i);
 	}
 }
 

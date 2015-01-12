@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 15:28:45 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 17:58:06 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include <libft.h>
 # include <stdarg.h>
+# include <stdio.h>
 # define HEXMAJ ("0123456789ABCDEF")
 # define HEXMIN ("0123456789abcdef")
 # define OXMAJ	("0X000000000000")
@@ -97,6 +98,14 @@ int		print_int_fill(t_flags *flags, int *i, int c);
 void	print_int_opt(t_flags *flags, int c, int size, int *i);
 void	print_plus(t_flags *flags, int *i, int c);
 void	fill_it(t_flags *flags, int size);
+
+/* Long Int function */
+void	ft_putlongnbr(long int nb);
+int		ft_longnbrlen(long int nb);
+void	print_longint_opt(t_flags *flags, long int l, int size, int *i);
+int		print_lint_fill(t_flags *flags, int *i, long int l);
+void	print_longi(t_flags *flags, va_list list, int *i);
+void	arg_is_longi(t_flags *flags, va_list list, int *i);
 
 /* Ptr function */
 void	ft_linttohexa(unsigned long int nb, char *str, char *hex);

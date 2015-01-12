@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:30:50 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 14:45:00 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 17:21:18 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ void	print_int(t_flags *flags, va_list list, int *i)
 		size = ft_nbrlen(c);
 		if (c < 0)
 			size += 1;
+		if (c > 0 && flags->optplus)
+		{
+			ft_putchar('+');
+			size += 1;
+		}
 		ft_putnbr(c);
 	}
 	i[1] += size;
@@ -90,8 +95,9 @@ void	print_int(t_flags *flags, va_list list, int *i)
 void	arg_is_int(t_flags *flags, va_list list, int *i)
 {
 
-	if ((flags->type == 'd' || flags->type == 'i') && flags->formf == 'l')
-		flags = flags;
+	if (((flags->type == 'd' || flags->type == 'i') && flags->formf == 'l') ||\
+		flags->type == 'D')
+		arg_is_longi(flags, list, i);
 	else
 		print_int(flags, list, i);
 }

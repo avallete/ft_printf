@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 10:15:00 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 10:34:22 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	print_plus(t_flags *flags, int *i, int c);
 void	fill_it(t_flags *flags, int size);
 
 /* Ptr function */
-void	ft_longinttohexa(unsigned long int nb, char *str, char *hex);
+void	linttohexa(unsigned long int nb, char *str, char *hex);
 void	arg_is_ptr(t_flags *flags, va_list list, int *i);
 void	print_ptr(va_list list, int *i);
 

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 13:28:07 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 15:28:45 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,12 @@ void	print_x(t_flags *flags, va_list list, int *i);
 void	arg_is_octal(t_flags *flags, va_list list, int *i);
 void	print_octal(va_list list, int *i);
 void	ft_linttoct(unsigned long int nb, char *str);
+
+/* Unsigned functions */
+void	ft_putlnbr(unsigned long int nbr);
+int		ft_lnbrlen(unsigned long int nbr);
+void	print_unsigned(va_list list, int *i);
+void	arg_is_unsigned(t_flags *flags, va_list list, int *i);
 
 /*
 ** ----------

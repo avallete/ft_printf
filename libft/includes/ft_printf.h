@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 11:13:36 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/12 13:28:07 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,11 @@ void	print_ptr(va_list list, int *i);
 void	ft_inttohexa(unsigned long int nb, char *str, char *hex);
 void	arg_is_x(t_flags *flags, va_list list, int *i);
 void	print_x(t_flags *flags, va_list list, int *i);
+
+/* Octal functions */
+void	arg_is_octal(t_flags *flags, va_list list, int *i);
+void	print_octal(va_list list, int *i);
+void	ft_linttoct(unsigned long int nb, char *str);
 
 /*
 ** ----------

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 18:18:39 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/13 18:11:17 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,18 @@ void	ft_putlnbr(unsigned long int nbr);
 int		ft_lnbrlen(unsigned long int nbr);
 void	print_unsigned(va_list list, int *i);
 void	arg_is_unsigned(t_flags *flags, va_list list, int *i);
+
+/* Wchar functions */
+void	arg_is_wchar(t_flags *flags, va_list list, int *i);
+void	print_wchar(va_list list, int *i);
+char	ft_putwchar(wchar_t c);
+void	ft_putnchar(unsigned char *f, int size);
+void	init_wchar(unsigned char *f, wchar_t c, int mode);
+
+/* WString functions */
+int		ft_putwstr(wchar_t *str);
+void	print_wstr(t_flags *flags, va_list list, int *i);
+void	arg_is_wstr(t_flags *flags, va_list list, int *i);
 
 /*
 ** ----------

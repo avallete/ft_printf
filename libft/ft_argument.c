@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:20:29 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 17:14:40 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/13 17:59:51 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void ft_type_sort(t_flags *flags, va_list list, int *i)
 	{
 		if (flags->type == '%')
 			arg_is_mod(flags, i);
-		if (flags->type == 's')
+		if (flags->type == 's' || flags->type == 'S')
 				arg_is_string(flags, list, i);
-		if (flags->type == 'c')
+		if (flags->type == 'c' || flags->type == 'C')
 				arg_is_char(flags, list, i);
 		if (flags->type == 'd' || flags->type == 'i' || flags->type == 'D')
 				arg_is_int(flags, list, i);

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:42:04 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 11:02:55 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/13 18:00:35 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	print_string(va_list list, int *i)
 
 void	arg_is_string(t_flags *flags, va_list list, int *i)
 {
-	if (flags->type == 's' && flags->formf == 'l')
-		flags = flags;
+	if ((flags->type == 's' && flags->formf == 'l') || flags->type == 'S')
+		arg_is_wstr(flags, list, i);
 	else
 		print_string(list, i);
 }

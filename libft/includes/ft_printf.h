@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 17:13:24 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/14 18:01:49 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,8 @@ void	arg_is_longi(t_flags *flags, va_list list, int *i);
 /* Ptr function */
 void	ft_linttohexa(unsigned long int nb, char *str, char *hex);
 void	arg_is_ptr(t_flags *flags, va_list list, int *i);
-void	print_ptr(va_list list, int *i);
+void	print_ptr(t_flags *flags, va_list list, int *i);
+void	print_rev_ptr(t_flags *flags, va_list list, int *i);
 
 /* X functions */
 void  cast_hexa(unsigned long long int *c, va_list list, t_flags *flags);

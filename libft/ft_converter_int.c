@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:30:50 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 16:07:53 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/14 16:11:56 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	arg_is_int(t_flags *flags, va_list list, int *i)
 {
 
 	if (((flags->type == 'd' || flags->type == 'i') && flags->formf == 'l') ||\
-  	flags->type == 'D' || (flags->formf == 'j'))
+  	flags->type == 'D' || (flags->formf == 'j') || (flags->formf == 'z'))
 		arg_is_longi(flags, list, i);
 	else
     print_int(flags, list, i);

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:30:50 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 17:21:18 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/14 15:07:29 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,22 @@ int		print_int_fill(t_flags *flags, int *i, int c)
 	return (size);
 }
 
+void  cast_int(int *c, va_list list, t_flags *flags)
+{
+  if (flags->formf == 'h' && flags->formt == 'h')
+    *c = (signed char)va_arg(list, int);
+  else if (flags->formf == 'h' && flags->formt == '\0')
+    *c = (short)va_arg(list, int);
+  else
+    *c = va_arg(list, int);
+}
 
 void	print_int(t_flags *flags, va_list list, int *i)
 {
 	int c;
 	int size;
 
-	c = va_arg(list, int);
+  cast_int(&c, list, flags);
 	if (flags->prec || flags->min_size)
 		size = print_int_fill(flags, i, c);
 	else

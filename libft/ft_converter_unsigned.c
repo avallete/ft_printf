@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 13:35:01 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 15:30:23 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/14 15:13:58 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void	ft_putlnbr(unsigned long int nbr)
+void	ft_putlnbr(unsigned long long int nbr)
 {
 	if (nbr <= 9)
 		ft_putchar(nbr + '0');
@@ -23,7 +23,7 @@ void	ft_putlnbr(unsigned long int nbr)
 	}
 }
 
-int		ft_lnbrlen(unsigned long int nbr)
+int		ft_lnbrlen(unsigned long long int nbr)
 {
 	int i;
 
@@ -36,11 +36,21 @@ int		ft_lnbrlen(unsigned long int nbr)
 	return (i);
 }
 
-void	print_unsigned(va_list list, int *i)
+void  cast_unsigned(unsigned long long int *c, va_list list, t_flags *flags)
 {
-	unsigned long int	pt;
+  if (flags->formf == 'h' && flags->formt == 'h')
+    *c = (unsigned char)va_arg(list, int);
+  else if (flags->formf == 'h' && flags->formt == '\0')
+    *c = (unsigned short)va_arg(list, int);
+  else
+    *c = va_arg(list, unsigned long long int);
+}
 
-	pt = va_arg(list, unsigned long int);
+void	print_unsigned(t_flags *flags, va_list list, int *i)
+{
+	unsigned long long int	pt;
+
+  cast_unsigned(&pt, list, flags);
 	ft_putlnbr(pt);
 	i[1] += ft_lnbrlen(pt);
 }
@@ -48,5 +58,5 @@ void	print_unsigned(va_list list, int *i)
 void	arg_is_unsigned(t_flags *flags, va_list list, int *i)
 {
 	if (flags->type == 'u' || flags->type == 'U')
-		print_unsigned(list, i);
+		print_unsigned(flags, list, i);
 }

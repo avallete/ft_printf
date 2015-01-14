@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 10:37:29 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 11:13:35 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/14 15:25:57 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void	ft_inttohexa(unsigned long int nb, char *str, char *hex)
+void	ft_inttohexa(unsigned long long int nb, char *str, char *hex)
 {
 	int i;
 
@@ -32,14 +32,29 @@ void	ft_inttohexa(unsigned long int nb, char *str, char *hex)
 		str[0] = '0';
 }
 
+void  cast_hexa(unsigned long long int *c, va_list list, t_flags *flags)
+{
+  if (flags->formf == 'h' && flags->formt == 'h')
+    *c = (unsigned char)va_arg(list, int);
+  else if (flags->formf == 'h' && flags->formt == '\0')
+    *c = (unsigned short)va_arg(list, int);
+  else if (flags->formf == 'j' && flags->formt == '\0')
+  {
+    *c = va_arg(list, int);
+    *c = UINT_MAX;
+  }
+  else
+    *c = va_arg(list, unsigned long long int);
+}
+
 void	print_x(t_flags *flags, va_list list, int *i)
 {
-	unsigned long int pt;
+	unsigned long long int pt;
 	char str[16];
 
 	flags = flags;
 	ft_bzero(str, 16);
-	pt = va_arg(list, unsigned long int);
+  cast_hexa(&pt, list, flags);
 	flags->type == 'x' ? ft_inttohexa(pt, str, HEXMIN) :\
 	ft_inttohexa(pt, str, HEXMAJ);
 	ft_putstr(str);

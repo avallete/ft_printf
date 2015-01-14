@@ -6,13 +6,13 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 11:16:08 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/12 18:18:38 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/14 15:21:20 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void	ft_linttoct(unsigned long int nb, char *str)
+void	ft_linttoct(unsigned long long int nb, char *str)
 {
 	const int	mask2 = (7 << 0);
 	int 		i;
@@ -33,14 +33,14 @@ void	ft_linttoct(unsigned long int nb, char *str)
 		str[0] = '0';
 }
 
-void	print_octal(va_list list, int *i)
+void	print_octal(t_flags *flags, va_list list, int *i)
 {
-	unsigned long int pt;
+	unsigned long long int pt;
 	char str[100];
 
 	ft_bzero(str, 100);
-	pt = va_arg(list, unsigned long int);
-	if (pt < ULONG_MAX)
+  cast_octal(&pt, list, flags);
+	if (pt < ULLONG_MAX)
 	{
 		ft_linttoct(pt, str);
 		ft_putstr(str);
@@ -53,8 +53,18 @@ void	print_octal(va_list list, int *i)
 	}
 }
 
+void  cast_octal(unsigned long long int *c, va_list list, t_flags *flags)
+{
+  if (flags->formf == 'h' && flags->formt == 'h')
+    *c = (unsigned char)va_arg(list, int);
+  else if (flags->formf == 'h' && flags->formt == '\0')
+    *c = (unsigned short)va_arg(list, int);
+  else
+    *c = va_arg(list, unsigned long long int);
+}
+
 void	arg_is_octal(t_flags *flags, va_list list, int *i)
 {
 	if (flags->type == 'o' || flags->type == 'O')
-		print_octal(list, i);
+		print_octal(flags, list, i);
 }

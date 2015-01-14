@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/13 18:11:17 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/14 15:22:03 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		print_int_fill(t_flags *flags, int *i, int c);
 void	print_int_opt(t_flags *flags, int c, int size, int *i);
 void	print_plus(t_flags *flags, int *i, int c);
 void	fill_it(t_flags *flags, int size);
+void  cast_int(int *c, va_list list, t_flags *flags);
 
 /* Long Int function */
 void	ft_putlongnbr(long int nb);
@@ -114,19 +115,22 @@ void	arg_is_ptr(t_flags *flags, va_list list, int *i);
 void	print_ptr(va_list list, int *i);
 
 /* X functions */
-void	ft_inttohexa(unsigned long int nb, char *str, char *hex);
+void  cast_hexa(unsigned long long int *c, va_list list, t_flags *flags);
+void	ft_inttohexa(unsigned long long int nb, char *str, char *hex);
 void	arg_is_x(t_flags *flags, va_list list, int *i);
 void	print_x(t_flags *flags, va_list list, int *i);
 
 /* Octal functions */
 void	arg_is_octal(t_flags *flags, va_list list, int *i);
-void	print_octal(va_list list, int *i);
-void	ft_linttoct(unsigned long int nb, char *str);
+void	print_octal(t_flags *flags, va_list list, int *i);
+void	ft_linttoct(unsigned long long int nb, char *str);
+void  cast_octal(unsigned long long int *c, va_list list, t_flags *flags);
 
 /* Unsigned functions */
-void	ft_putlnbr(unsigned long int nbr);
-int		ft_lnbrlen(unsigned long int nbr);
-void	print_unsigned(va_list list, int *i);
+void	ft_putlnbr(unsigned long long int nbr);
+int		ft_lnbrlen(unsigned long long int nbr);
+void	print_unsigned(t_flags *flags, va_list list, int *i);
+void  cast_unsigned(unsigned long long int *c, va_list list, t_flags *flags);
 void	arg_is_unsigned(t_flags *flags, va_list list, int *i);
 
 /* Wchar functions */

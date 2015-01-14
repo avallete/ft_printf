@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:30:50 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 16:11:56 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/14 17:10:36 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ void	print_int_opt(t_flags *flags, int c, int size, int *i)
 	}
 }
 
+void  print_no_min(t_flags *flags, int *i, int c)
+{
+  print_plus(flags, i, c);
+  if (flags->prec)
+    ft_filler('0', flags->prec - ft_nbrlen(c));
+  ft_putnbr(c);
+}
+
 int		print_int_fill(t_flags *flags, int *i, int c)
 {
 	int size;
@@ -57,11 +65,13 @@ int		print_int_fill(t_flags *flags, int *i, int c)
 	size = ft_nbrlen(c);
 	if (flags->prec)
 		size += (flags->prec - size);
-	if (flags->optplus && c > 0)
+	if ((flags->optplus && c > 0) || c < 0)
 		size += 1;
 	if (flags->min_size && size < flags->min_size)
 		print_int_opt(flags, c, size, i);
-	if (flags->optplus && c > 0)
+  else
+    print_no_min(flags, i, c);
+	if ((flags->optplus && c > 0) || c < 0)
 		size -= 1;
 	if (c < 0)
 		size += 1;

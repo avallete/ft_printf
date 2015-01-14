@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 14:49:51 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 18:01:48 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/14 19:14:20 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_ptr(t_flags *flags, va_list list, int *i)
   ft_linttohexa(pt, str, HEXMIN);
   size = ft_strlen(str);
   flags->min_size - size > 0 ? \
-  (ft_filler(' ', flags->min_size - size), i[1] += flags->min_size - size) :
+  (fill_it(flags, flags->min_size - size), i[1] += flags->min_size - size) :
   (size += 0);
   ft_putstr(str);
   i[1] += ft_strlen(str);
@@ -60,14 +60,14 @@ void	print_rev_ptr(t_flags *flags, va_list list, int *i)
   size = ft_strlen(str);
   ft_putstr(str);
   flags->min_size - size > 0 ? \
-  (ft_filler(' ', flags->min_size - size), i[1] += flags->min_size - size) :
+  (fill_it(flags, flags->min_size - size), i[1] += flags->min_size - size) :
   (size += 0);
   i[1] += ft_strlen(str);
 }
 
 void	arg_is_ptr(t_flags *flags, va_list list, int *i)
 {
-  if (flags->optmin)
+  if (flags->optmin || flags->optzero)
     print_rev_ptr(flags, list, i);
   else
     print_ptr(flags, list, i);

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 10:37:29 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 14:55:59 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 17:08:52 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	print_x(t_flags *flags, va_list list, int *i)
 
 void	arg_is_x(t_flags *flags, va_list list, int *i)
 {
-  if ((!(flags->optdot)) || (flags->optdot && flags->prec) || flags->optsharp)
+  if ((!(flags->optdot)) || (flags->optdot && flags->prec))
   {
     if (flags->type == 'x' || flags->type == 'X')
       print_x(flags, list, i);

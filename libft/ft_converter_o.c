@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 11:16:08 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 12:41:10 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 18:23:34 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	print_octal(t_flags *flags, va_list list, int *i)
 
 void  cast_octal(unsigned long long int *c, va_list list, t_flags *flags)
 {
-  if (flags->formf == 'h' && flags->formt == 'h')
+  if (flags->formf == 'h' && flags->formt == 'h' && flags->type != 'O')
     *c = (unsigned char)va_arg(list, int);
-  else if (flags->formf == 'h' && flags->formt == '\0')
+  else if (flags->formf == 'h')
     *c = (unsigned short)va_arg(list, int);
   else
     *c = va_arg(list, unsigned long long int);

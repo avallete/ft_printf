@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 13:35:01 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 14:56:00 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 18:25:09 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int		ft_lnbrlen(unsigned long long int nbr)
 
 void  cast_unsigned(unsigned long long int *c, va_list list, t_flags *flags)
 {
-  if (flags->formf == 'h' && flags->formt == 'h')
+  if (flags->formf == 'h' && flags->formt == 'h' && flags->type != 'U')
     *c = (unsigned char)va_arg(list, int);
-  else if (flags->formf == 'h' && flags->formt == '\0')
+  else if (flags->formf == 'h')
     *c = (unsigned short)va_arg(list, int);
   else
     *c = va_arg(list, unsigned long long int);

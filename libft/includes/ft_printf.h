@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 12:15:03 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 17:54:49 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	arg_is_mod(t_flags *flags, int *i);
 
 /* String function */
 void	arg_is_string(t_flags *flags, va_list list, int *i);
-void	print_string(va_list list, int *i);
+void	print_string(t_flags *flags, va_list list, int *i);
 
 /* Char function */
 void	arg_is_char(t_flags *flags, va_list list, int *i);

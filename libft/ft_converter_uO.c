@@ -1,25 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_converter_mod.c                                 :+:      :+:    :+:   */
+/*   ft_converter_uO.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/10 16:40:04 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 17:25:31 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/15 17:51:34 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/15 17:51:44 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <ft_printf.h>
-# include <stdio.h>
-
-void arg_is_mod(t_flags *flags, int *i)
-{
-	if (flags->type == '%')
-	{
-    flags->min_size - 1 > 0 ? (fill_it(flags, flags->min_size - 1), \
-     i[1] += flags->min_size - 1) : (i[1] += 0);
-		ft_putchar('%');
-		i[1] += 1;
-	}
-}
+#include <ft_printf.h>

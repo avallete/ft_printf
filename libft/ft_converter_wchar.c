@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 09:56:27 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/13 18:11:16 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 16:52:30 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void	print_wchar(va_list list, int *i)
 
 void	arg_is_wchar(t_flags *flags, va_list list, int *i)
 {
-	flags = flags;
-	print_wchar(list, i);
+    flags = flags;
+	  print_wchar(list, i);
 }

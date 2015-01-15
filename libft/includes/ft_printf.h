@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 11:22:48 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 12:15:03 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef	struct	s_flags
 	char		optzero;
 	char		optsharp;
 	char		optspace;
+  char    optdot;
 	char		formf;
 	char		formt;
 	int			min_size;

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:10:19 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 11:07:03 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 11:37:21 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	check_prec(const char *str, t_flags *flags, int *i)
 	if (str[i[0]] == '.')
 	{
 		*i += 1;
+    flags->optdot = 1;
 		ft_grep_first_number(str, i, pres);
 		flags->prec = ft_atoi(pres);
 	}

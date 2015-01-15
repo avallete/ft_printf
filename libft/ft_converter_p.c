@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 14:49:51 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 19:14:20 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 12:39:18 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,11 @@ void	print_rev_ptr(t_flags *flags, va_list list, int *i)
 
 void	arg_is_ptr(t_flags *flags, va_list list, int *i)
 {
+  if (!(flags->optdot) || (flags->optdot && flags->prec) || flags->optsharp)
+  {
   if (flags->optmin || flags->optzero)
     print_rev_ptr(flags, list, i);
   else
     print_ptr(flags, list, i);
+  }
 }

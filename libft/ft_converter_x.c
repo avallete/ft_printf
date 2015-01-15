@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 10:37:29 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 10:54:36 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 14:55:59 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	print_x(t_flags *flags, va_list list, int *i)
   unsigned long long int pt;
   char str[16];
 
-  flags = flags;
   ft_bzero(str, 16);
   cast_hexa(&pt, list, flags);
   if (pt > 0 && flags->optsharp)
@@ -57,12 +56,25 @@ void	print_x(t_flags *flags, va_list list, int *i)
   }
   flags->type == 'x' ? ft_inttohexa(pt, str, HEXMIN) :\
                ft_inttohexa(pt, str, HEXMAJ);
+  if (flags->min_size > (int)(flags->prec + ft_strlen(str)))
+  {
+    ft_filler(' ', flags->min_size - flags->prec);
+    i[1] += flags->min_size - flags->prec;
+  }
+  if (flags->prec)
+  {
+    ft_filler('0', flags->prec - ft_strlen(str));
+    i[1] += flags->prec - ft_strlen(str);
+  }
   ft_putstr(str);
   i[1] += ft_strlen(str);
 }
 
 void	arg_is_x(t_flags *flags, va_list list, int *i)
 {
-  if (flags->type == 'x' || flags->type == 'X')
-    print_x(flags, list, i);
+  if ((!(flags->optdot)) || (flags->optdot && flags->prec) || flags->optsharp)
+  {
+    if (flags->type == 'x' || flags->type == 'X')
+      print_x(flags, list, i);
+  }
 }

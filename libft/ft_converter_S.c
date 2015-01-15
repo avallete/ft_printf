@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:58:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/13 18:11:15 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 12:38:10 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	print_wstr(t_flags *flags, va_list list, int *i)
 
 void	arg_is_wstr(t_flags *flags, va_list list, int *i)
 {
-	print_wstr(flags, list, i);
+  if (!(flags->optdot) || (flags->optdot && flags->prec) || flags->optsharp)
+	  print_wstr(flags, list, i);
 }

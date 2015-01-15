@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 16:17:42 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 15:39:42 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 12:50:28 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ void	print_longi(t_flags *flags, va_list list, int *i)
 
 void	arg_is_longi(t_flags *flags, va_list list, int *i)
 {
-	print_longi(flags, list, i);
+  if (!(flags->optdot) || (flags->optdot && flags->prec) || flags->optsharp)
+	  print_longi(flags, list, i);
 }

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 10:34:27 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 19:01:32 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 12:38:25 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ void	print_char(t_flags *flags, va_list list, int *i)
 
 void	arg_is_char(t_flags *flags, va_list list, int *i)
 {
+  if (!(flags->optdot) || (flags->optdot && flags->prec) || flags->optsharp)
+  {
 	if (flags->type == 'C' || flags->formf == 'l')
 		arg_is_wchar(flags, list, i);
 	else
 		print_char(flags, list, i);
+  }
 }

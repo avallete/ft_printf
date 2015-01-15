@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:30:50 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 11:39:11 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 12:37:57 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	print_int(t_flags *flags, va_list list, int *i)
 void	arg_is_int(t_flags *flags, va_list list, int *i)
 {
 
-  if (!(flags->optdot) || (flags->optdot && flags->prec))
+  if (!(flags->optdot) || (flags->optdot && flags->prec) || flags->optsharp)
   {
     if ((flags->formf == 'l') ||\
         flags->type == 'D' || (flags->formf == 'j') || (flags->formf == 'z'))

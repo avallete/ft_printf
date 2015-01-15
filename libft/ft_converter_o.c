@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 11:16:08 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 10:52:00 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 12:41:10 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,46 @@ void	print_octal(t_flags *flags, va_list list, int *i)
 {
   unsigned long long int pt;
   char str[100];
+  int  size;
 
   ft_bzero(str, 100);
   cast_octal(&pt, list, flags);
+  size = 0;
   if (pt > 0 && flags->optsharp)
   {
     ft_putchar('0');
-    i[1]++;
+    size++;
   }
   if (pt < ULLONG_MAX)
   {
-
     ft_linttoct(pt, str);
+    size += ft_strlen(str);
+    if (flags->min_size > size + flags->prec)
+      ft_filler(' ', flags->min_size - flags->prec);
+    if (flags->prec)
+    {
+      ft_filler('0', flags->prec - size);
+      size += flags->prec - size;
+    }
     ft_putstr(str);
-    i[1] += ft_strlen(str);
+    if (flags->min_size > flags->prec + size)
+      size += flags->min_size - size;
+    i[1] += size;
   }
   else
   {
+    size += 22;
+    if (flags->min_size > size + flags->prec)
+      ft_filler(' ', flags->min_size - flags->prec);
+    if (flags->prec)
+    {
+      ft_filler('0', flags->prec - size);
+      size += flags->prec - size;
+    }
     ft_putstr("1777777777777777777777");
-    i[1] += 22;
+    if (flags->min_size > flags->prec + size)
+      size += flags->min_size - size;
+    i[1] += size;
   }
 }
 
@@ -71,6 +92,9 @@ void  cast_octal(unsigned long long int *c, va_list list, t_flags *flags)
 
 void	arg_is_octal(t_flags *flags, va_list list, int *i)
 {
-  if (flags->type == 'o' || flags->type == 'O')
-    print_octal(flags, list, i);
+  if ((!(flags->optdot)) || (flags->optdot && flags->prec) || flags->optsharp)
+  {
+    if (flags->type == 'o' || flags->type == 'O')
+      print_octal(flags, list, i);
+  }
 }

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 18:09:31 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 10:37:41 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	check_type(const char *str, t_flags *flags, int *i);
 int		found_flags(const char *str, va_list list);
 void	ft_arg_sort(const char *str, va_list list, int *i);
 void	init_flags(const char *str, t_flags *flags, int *i);
-
+void ft_type_sort(const char *str, t_flags *flags, va_list list, int *i);
 
 
 /*

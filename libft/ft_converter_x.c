@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 10:37:29 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 16:10:30 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 10:54:36 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ void	print_x(t_flags *flags, va_list list, int *i)
   flags = flags;
   ft_bzero(str, 16);
   cast_hexa(&pt, list, flags);
+  if (pt > 0 && flags->optsharp)
+  {
+    flags->type == 'x' ? ft_putstr("0x") : ft_putstr("0X");
+    i[1] += 2;
+  }
   flags->type == 'x' ? ft_inttohexa(pt, str, HEXMIN) :\
                ft_inttohexa(pt, str, HEXMAJ);
   ft_putstr(str);

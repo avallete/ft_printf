@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:30:50 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/14 18:58:39 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 11:22:48 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,34 @@
 
 void	fill_it(t_flags *flags, int size)
 {
-  if (flags->optzero && !(flags->prec))
+  if (flags->optzero && !(flags->prec) && (!(flags->optmin)))
     ft_filler('0', size);
   else
     ft_filler(' ', size);
 }
 
-void	print_plus(t_flags *flags, int *i, int c)
+void	print_plus(t_flags *flags, int *i, int c, int *size)
 {
-  if (flags->optplus && c > 0)
+  if (flags->optplus && c >= 0)
   {
     ft_putchar('+');
     i[1] += 1;
+    *size += 1;
   }
 }
 
 void	print_int_opt(t_flags *flags, int c, int size, int *i)
 {
+  if (flags->optspace)
+  {
+    ft_putchar(' ');
+    i[1] += 1;
+    size += 1;
+  }
   i[1] += flags->min_size - size;
   if (flags->optmin)
   {
-    print_plus(flags, i, c);
+    print_plus(flags, i, c, &size);
     if (flags->optzero || flags->prec)
       c < 0 ? (c = -c, ft_putchar('-')) : (c += 0);
     if (flags->prec)
@@ -45,7 +52,7 @@ void	print_int_opt(t_flags *flags, int c, int size, int *i)
   }
   else
   {
-    print_plus(flags, i, c);
+    print_plus(flags, i, c, &size);
     if (flags->optzero || flags->prec)
       c < 0 ? (c = -c, ft_putchar('-')) : (c += 0);
     if (flags->min_size)
@@ -58,7 +65,10 @@ void	print_int_opt(t_flags *flags, int c, int size, int *i)
 
 void  print_no_min(t_flags *flags, int *i, int c)
 {
-  print_plus(flags, i, c);
+  int size;
+
+  size = 0;
+  print_plus(flags, i, c, &size);
   c < 0 ? (c = -c, ft_putchar('-')) : (c += 0);
   if (flags->prec)
     ft_filler('0', flags->prec - ft_nbrlen(c));
@@ -78,7 +88,7 @@ int		print_int_fill(t_flags *flags, int *i, int c)
     print_int_opt(flags, c, size, i);
   else
     print_no_min(flags, i, c);
-  if ((flags->optplus && c > 0) || c < 0)
+  if ((flags->optplus && c >= 0) || c < 0)
     size -= 1;
   if (c < 0)
     size += 1;
@@ -105,6 +115,11 @@ void	print_int(t_flags *flags, va_list list, int *i)
     size = print_int_fill(flags, i, c);
   else
   {
+    if (flags->optspace && ((!flags->optplus)) && c > 0)
+    {
+      ft_putchar(' ');
+      i[1]++;
+    }
     size = ft_nbrlen(c);
     if (c < 0)
       size += 1;

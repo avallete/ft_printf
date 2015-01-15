@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 10:37:41 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/15 11:22:48 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	arg_is_int(t_flags *flags, va_list list, int *i);
 void	print_int(t_flags *flags, va_list list, int *i);
 int		print_int_fill(t_flags *flags, int *i, int c);
 void	print_int_opt(t_flags *flags, int c, int size, int *i);
-void	print_plus(t_flags *flags, int *i, int c);
+void	print_plus(t_flags *flags, int *i, int c, int *size);
 void	fill_it(t_flags *flags, int size);
 void  cast_int(int *c, va_list list, t_flags *flags);
 

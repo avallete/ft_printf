@@ -6,37 +6,11 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 16:17:42 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 12:50:28 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/16 12:52:44 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-
-void	ft_putlongnbr(long int nb)
-{
-	if (nb >= 0 && nb <= 9)
-		ft_putchar('0' + nb);
-	else
-	{
-		ft_putlongnbr(nb / 10);
-		ft_putlongnbr(nb % 10);
-	}
-}
-
-int		ft_longnbrlen(long int nb)
-{
-	int i;
-
-	i = 1;
-	if (nb < 0)
-		nb = -nb;
-	while (nb > 9)
-	{
-		i++;
-		nb /= 10;
-	}
-	return (i);
-}
 
 void	print_longint_opt(t_flags *flags, long int l, int size, int *i)
 {
@@ -77,6 +51,12 @@ int		print_lint_fill(t_flags *flags, int *i, long int l)
 	return (size);
 }
 
+void	print_longierr(int *size)
+{
+	ft_putstr("-9223372036854775808");
+	*size = 20;
+}
+
 void	print_longi(t_flags *flags, va_list list, int *i)
 {
 	long int	l;
@@ -85,30 +65,27 @@ void	print_longi(t_flags *flags, va_list list, int *i)
 	l = (long int)va_arg(list, long int);
 	if (l > -9223372036854775807)
 	{
-	if (flags->prec || flags->min_size)
-		size = print_lint_fill(flags, i, l);
-	else
-	{
-		size = ft_longnbrlen(l);
-		if (flags->optplus)
+		if (flags->prec || flags->min_size)
+			size = print_lint_fill(flags, i, l);
+		else
 		{
-			ft_putchar('+');
-			size++;
+			size = ft_longnbrlen(l);
+			if (flags->optplus)
+			{
+				ft_putchar('+');
+				size++;
+			}
+			l < 0 ? (ft_putchar('-'), l *= -1, size++) : (l += 0);
+			ft_putlongnbr(l);
 		}
-		l < 0 ? (ft_putchar('-'), l *= -1, size++) : (l += 0);
-		ft_putlongnbr(l);
-	}
 	}
 	else
-	{
-		ft_putstr("-9223372036854775808");
-		size = 20;
-	}
+		print_longierr(&size);
 	i[1] += size;
 }
 
 void	arg_is_longi(t_flags *flags, va_list list, int *i)
 {
-  if (!(flags->optdot) || (flags->optdot && flags->prec) || flags->optsharp)
-	  print_longi(flags, list, i);
+	if (!(flags->optdot) || (flags->optdot && flags->prec) || flags->optsharp)
+		print_longi(flags, list, i);
 }

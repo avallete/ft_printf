@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_longnbrlen.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 14:41:35 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/16 11:27:33 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/16 12:50:53 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/16 12:51:40 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <ft_printf.h>
 
-void		ft_putnbr(int n)
+int		ft_longnbrlen(long int nb)
 {
-	char *str;
+	int i;
 
-	str = ft_itoa(n);
-	if (str)
+	i = 1;
+	if (nb < 0)
+		nb = -nb;
+	while (nb > 9)
 	{
-		ft_putstr(str);
-		free(str);
-		str = NULL;
+		i++;
+		nb /= 10;
 	}
+	return (i);
 }

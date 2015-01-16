@@ -6,12 +6,11 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:12 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/11 11:08:31 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/16 11:27:50 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <ft_printf.h>
-# include <stdio.h>
+#include <ft_printf.h>
 
 int ft_printf(const char *format, ...)
 {

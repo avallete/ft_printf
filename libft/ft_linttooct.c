@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_linttooct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 14:41:35 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/16 11:27:33 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/16 12:49:12 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/16 12:50:04 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <ft_printf.h>
 
-void		ft_putnbr(int n)
+void	ft_linttoct(unsigned long long int nb, char *str)
 {
-	char *str;
+	const int	mask2 = (7 << 0);
+	int			i;
 
-	str = ft_itoa(n);
-	if (str)
+	i = 1;
+	if (nb > 0)
 	{
-		ft_putstr(str);
-		free(str);
-		str = NULL;
+		while ((nb >> (3 * i)) > 0)
+			i++;
+		while (nb > 0)
+		{
+			str[i - 1] = '0' + (nb & mask2);
+			i--;
+			nb >>= 3;
+		}
 	}
+	else
+		str[0] = '0';
 }

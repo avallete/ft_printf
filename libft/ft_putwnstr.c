@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putwnstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 14:41:35 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/16 11:27:33 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/16 12:43:15 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/16 12:43:44 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <ft_printf.h>
 
-void		ft_putnbr(int n)
+int		ft_putwnstr(wchar_t *str, int n)
 {
-	char *str;
+	int i;
 
-	str = ft_itoa(n);
-	if (str)
+	i = 0;
+	while (*str != '\0' && (i + ft_wcharlen(*str)) <= n)
 	{
-		ft_putstr(str);
-		free(str);
-		str = NULL;
+		i += ft_putwchar(*str);
+		str++;
 	}
+	return (i);
 }

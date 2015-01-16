@@ -6,12 +6,11 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:10:19 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 11:37:21 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/16 12:25:41 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <ft_printf.h>
-
+#include <ft_printf.h>
 
 void	check_flg(const char *str, t_flags *flags, int *i)
 {
@@ -42,7 +41,7 @@ void	check_prec(const char *str, t_flags *flags, int *i)
 	if (str[i[0]] == '.')
 	{
 		*i += 1;
-    flags->optdot = 1;
+		flags->optdot = 1;
 		ft_grep_first_number(str, i, pres);
 		flags->prec = ft_atoi(pres);
 	}
@@ -50,7 +49,8 @@ void	check_prec(const char *str, t_flags *flags, int *i)
 
 void	check_form(const char *str, t_flags *flags, int *i)
 {
-	if (str[i[0]] == 'h' || str[i[0]] == 'l' || str[i[0]] == 'j' || str[i[0]] == 'z')
+	if (str[i[0]] == 'h' || str[i[0]] == 'l' \
+		|| str[i[0]] == 'j' || str[i[0]] == 'z')
 	{
 		flags->formf = str[i[0]];
 		i[0] += 1;
@@ -76,5 +76,3 @@ void	check_type(const char *str, t_flags *flags, int *i)
 	else
 		flags->type = '\0';
 }
-
-

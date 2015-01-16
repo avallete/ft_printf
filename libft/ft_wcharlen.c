@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_wcharlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 14:41:35 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/16 11:27:33 by avallete         ###   ########.fr       */
+/*   Created: 2015/01/16 12:44:26 by avallete          #+#    #+#             */
+/*   Updated: 2015/01/16 12:44:37 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <ft_printf.h>
 
-void		ft_putnbr(int n)
+char	ft_wcharlen(wchar_t c)
 {
-	char *str;
+	unsigned int e;
 
-	str = ft_itoa(n);
-	if (str)
+	e = (unsigned int)c;
+	if (c >= 0 && c <= 255)
+		return (1);
+	else if (e > 255 && e < 0x10FFFF)
 	{
-		ft_putstr(str);
-		free(str);
-		str = NULL;
+		if (e < 0x07FF)
+			return (2);
+		else if (e < 0xFFFF)
+			return (3);
+		else
+			return (4);
 	}
+	else
+		return (1);
 }

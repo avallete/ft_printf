@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 10:19:59 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/16 12:59:58 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/16 16:40:37 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <libft.h>
 # include <LIMITS.h>
 # include <stdarg.h>
-# include <stdio.h>
 # define HEXMAJ ("0123456789ABCDEF")
 # define HEXMIN ("0123456789abcdef")
 # define OXMAJ	("0X000000000000")

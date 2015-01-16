@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/12 11:16:08 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 18:23:34 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/16 10:14:30 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,57 @@ void	ft_linttoct(unsigned long long int nb, char *str)
     str[0] = '0';
 }
 
+int   max_value(t_flags *flags, unsigned long long nb)
+{
+  int size;
+
+  size = 0;
+  if ((flags->type == 'O' || flags->formf == 'l' || flags->formf == 'j' || flags->formf == 'z') && nb >= ULONG_MAX)
+  {
+    size += 22;
+    if (flags->min_size > size + flags->prec)
+      ft_filler(' ', flags->min_size - flags->prec);
+    if (flags->prec)
+    {
+      ft_filler('0', flags->prec - size);
+      size += flags->prec - size;
+    }
+    ft_putstr("1777777777777777777777");
+    if (flags->min_size > flags->prec + size)
+      size += flags->min_size - size;
+  }
+  else if ((flags->type == 'o' && flags->formf == '\0') && nb >= LONG_MAX)
+  {
+    size += 11;
+    if (flags->min_size > size + flags->prec)
+      ft_filler(' ', flags->min_size - flags->prec);
+    if (flags->prec)
+    {
+      ft_filler('0', flags->prec - size);
+      size += flags->prec - size;
+    }
+    ft_putstr("37777777777");
+    if (flags->min_size > flags->prec + size)
+      size += flags->min_size - size;
+  }
+  else
+  {
+    size += 22;
+    if (flags->min_size > size + flags->prec)
+      ft_filler(' ', flags->min_size - flags->prec);
+    if (flags->prec)
+    {
+      ft_filler('0', flags->prec - size);
+      size += flags->prec - size;
+    }
+    ft_putstr("1000000000000000000000");
+    if (flags->min_size > flags->prec + size)
+      size += flags->min_size - size;
+
+  }
+  return (size);
+}
+
 void	print_octal(t_flags *flags, va_list list, int *i)
 {
   unsigned long long int pt;
@@ -47,7 +98,7 @@ void	print_octal(t_flags *flags, va_list list, int *i)
     ft_putchar('0');
     size++;
   }
-  if (pt < ULLONG_MAX)
+  if ((flags->type == 'O' && pt < ULONG_MAX && pt != (unsigned long long)LONG_MIN) || (flags->type == 'o' && pt < LONG_MAX))
   {
     ft_linttoct(pt, str);
     size += ft_strlen(str);
@@ -65,17 +116,7 @@ void	print_octal(t_flags *flags, va_list list, int *i)
   }
   else
   {
-    size += 22;
-    if (flags->min_size > size + flags->prec)
-      ft_filler(' ', flags->min_size - flags->prec);
-    if (flags->prec)
-    {
-      ft_filler('0', flags->prec - size);
-      size += flags->prec - size;
-    }
-    ft_putstr("1777777777777777777777");
-    if (flags->min_size > flags->prec + size)
-      size += flags->min_size - size;
+    size += max_value(flags, pt);
     i[1] += size;
   }
 }
@@ -87,7 +128,7 @@ void  cast_octal(unsigned long long int *c, va_list list, t_flags *flags)
   else if (flags->formf == 'h')
     *c = (unsigned short)va_arg(list, int);
   else
-    *c = va_arg(list, unsigned long long int);
+    *c = (unsigned long long int)va_arg(list, unsigned long long int);
 }
 
 void	arg_is_octal(t_flags *flags, va_list list, int *i)

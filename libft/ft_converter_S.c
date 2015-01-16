@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:58:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/15 17:27:33 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/16 10:33:43 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,31 @@ void	print_wstr(t_flags *flags, va_list list, int *i)
   str ? (size = ft_wstrlen(str)) : (size += 6);
   if ((flags->optdot && flags->prec < size))
     size = flags->prec;
-  if (flags->min_size > size)
+  if (!flags->optmin)
   {
-    fill_it(flags, flags->min_size - size);
-    size += flags->min_size - size;
+    if (flags->min_size > size)
+    {
+      fill_it(flags, flags->min_size - size);
+      size += flags->min_size - size;
+    }
+    if (flags->optdot && flags->prec)
+      size += ft_putwnstr(str, flags->prec) - flags->prec;
+    else
+      str ? ft_putwstr(str) : ft_putstr("(null)");
   }
-  if (flags->optdot && flags->prec)
-    size += ft_putwnstr(str, flags->prec) - flags->prec;
   else
-    str ? ft_putwstr(str) : ft_putstr("(null)");
+  {
+    if (flags->optdot && flags->prec)
+      size += ft_putwnstr(str, flags->prec) - flags->prec;
+    else
+      str ? ft_putwstr(str) : ft_putstr("(null)");
+    if (flags->min_size > size)
+    {
+      fill_it(flags, flags->min_size - size);
+      size += flags->min_size - size;
+    }
+
+  }
   i[1] += size;
 }
 

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:58:47 by avallete          #+#    #+#             */
-/*   Updated: 2015/01/16 10:33:43 by avallete         ###   ########.fr       */
+/*   Updated: 2015/01/16 10:39:03 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int   ft_wnstrlen(wchar_t *str, int n)
   int i;
 
   i = 0;
-  while (*str != '\0' && i <= n)
+  while (*str != '\0' && i  + ft_wcharlen(*str) <= n)
   {
     i += ft_wcharlen(*str);
     str++;
@@ -91,24 +91,24 @@ void	print_wstr(t_flags *flags, va_list list, int *i)
   size = 0;
   str = va_arg(list, wchar_t*);
   str ? (size = ft_wstrlen(str)) : (size += 6);
-  if ((flags->optdot && flags->prec < size))
-    size = flags->prec;
+  if ((flags->optdot && flags->prec && str))
+    size = ft_wnstrlen(str, flags->prec);
   if (!flags->optmin)
   {
-    if (flags->min_size > size)
+    if (flags->min_size >= size)
     {
       fill_it(flags, flags->min_size - size);
       size += flags->min_size - size;
     }
     if (flags->optdot && flags->prec)
-      size += ft_putwnstr(str, flags->prec) - flags->prec;
+      ft_putwnstr(str, flags->prec);
     else
       str ? ft_putwstr(str) : ft_putstr("(null)");
   }
   else
   {
     if (flags->optdot && flags->prec)
-      size += ft_putwnstr(str, flags->prec) - flags->prec;
+      ft_putwnstr(str, flags->prec);
     else
       str ? ft_putwstr(str) : ft_putstr("(null)");
     if (flags->min_size > size)
